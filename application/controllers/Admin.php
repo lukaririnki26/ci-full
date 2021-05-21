@@ -145,7 +145,7 @@ class Admin extends CI_Controller
                 else {
                     // set flash for alert
                     $this->Admin_model->addSubMenu();
-                    $this->session->set_flashdata('flash', 'added.');
+                    $this->session->set_flashdata('flash', 'Sub Menu~added.');
                     redirect('admin/submenu');
                 }
             } elseif ($uri3 == 'edit') {
@@ -163,13 +163,13 @@ class Admin extends CI_Controller
                 else {
                     // set flash for alert
                     $this->Admin_model->editSubMenu($uri4);
-                    $this->session->set_flashdata('flash', 'edited.');
+                    $this->session->set_flashdata('flash', 'Sub Menu~edited.');
                     redirect('admin/submenu');
                 }
             } elseif ($uri3 == 'del') {
                 // set flash for alert
                 $this->Admin_model->delSubMenu($uri4);
-                $this->session->set_flashdata('flash', 'deleted.');
+                $this->session->set_flashdata('flash', 'Sub Menu~deleted.');
                 redirect('admin/submenu');
             }
         }
@@ -177,7 +177,7 @@ class Admin extends CI_Controller
         else {
             $this->load->view('admin/submenu');
         }
-        $this->load->view('templates/admin_submenu_footer');
+        $this->load->view('templates/footer');
     }
     //create method role
     public function role()

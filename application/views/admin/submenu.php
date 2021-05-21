@@ -30,7 +30,7 @@
                     <td><?= $sm['is_active']; ?></td>
                     <td>
                         <a class="badge badge-warning" href="<?= base_url('admin/submenu/edit/' . str_replace(['=', '+', '/'], ['_', '-', '~'], $this->encryption->encrypt($sm['id']))); ?>">Edit</a>
-                        <a class="badge badge-danger badge-del" data-val="<?= $sm['title']; ?>" href="<?= base_url('admin/submenu/del/' . str_replace(['=', '+', '/'], ['_', '-', '~'], $this->encryption->encrypt($sm['id']))); ?>">Delete</a>
+                        <a class="badge badge-danger badge-del" data-title="Sub Menu" data-text="<?= $sm['title']; ?>" href="<?= base_url('admin/submenu/del/' . str_replace(['=', '+', '/'], ['_', '-', '~'], $this->encryption->encrypt($sm['id']))); ?>">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
