@@ -63,7 +63,7 @@ class Admin extends CI_Controller
                 else {
                     // set flash for alert
                     $this->Admin_model->addMenu();
-                    $this->session->set_flashdata('flash', 'added.');
+                    $this->session->set_flashdata('flash', ' Menu~added.');
                     redirect('admin/menu');
                 }
             } elseif ($uri3 == 'edit') {
@@ -80,7 +80,7 @@ class Admin extends CI_Controller
                     else {
                         // set flash for alert
                         $this->Admin_model->editMenu($uri4);
-                        $this->session->set_flashdata('flash', 'edited.');
+                        $this->session->set_flashdata('flash', 'Menu~edited.');
                         redirect('admin/menu');
                     }
                 }
@@ -93,7 +93,7 @@ class Admin extends CI_Controller
                 if ($uri4 != null) {
                     // set flash for alert
                     $this->Admin_model->delMenu($uri4);
-                    $this->session->set_flashdata('flash', 'deleted.');
+                    $this->session->set_flashdata('flash', 'Menu~deleted.');
                     redirect('admin/menu');
                 }
                 // if uri4 not found 
@@ -110,7 +110,7 @@ class Admin extends CI_Controller
         else {
             $this->load->view('admin/menu');
         }
-        $this->load->view('templates/admin_menu_footer');
+        $this->load->view('templates/footer');
     }
     // method submenu
     public function submenu()

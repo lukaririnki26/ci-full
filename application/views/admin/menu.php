@@ -22,7 +22,7 @@
                     <td><?= $m['menu']; ?></td>
                     <td>
                         <a class="badge badge-warning" href="<?= base_url('admin/menu/edit/' . str_replace(['=', '+', '/'], ['_', '-', '~'], $this->encryption->encrypt($m['id']))); ?>">Edit</a>
-                        <a class="badge badge-danger badge-del" data-vam="<?= $m['menu']; ?>" href="<?= base_url('admin/menu/del/' . str_replace(['=', '+', '/'], ['_', '-', '~'], $this->encryption->encrypt($m['id']))); ?>">Delete</a>
+                        <a class="badge badge-danger badge-del" data-title="Menu" data-text="<?= $m['menu']; ?>" href="<?= base_url('admin/menu/del/' . str_replace(['=', '+', '/'], ['_', '-', '~'], $this->encryption->encrypt($m['id']))); ?>">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
