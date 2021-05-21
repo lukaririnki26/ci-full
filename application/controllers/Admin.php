@@ -211,7 +211,7 @@ class Admin extends CI_Controller
                 else {
                     // set flash for alert
                     $this->Admin_model->addRole();
-                    $this->session->set_flashdata('flash', 'added.');
+                    $this->session->set_flashdata('flash', 'Role~added.');
                     redirect('admin/role');
                 }
             } elseif ($uri3 == 'edit') {
@@ -228,7 +228,7 @@ class Admin extends CI_Controller
                     else {
                         // set flash for alert
                         $this->Admin_model->editRole($uri4);
-                        $this->session->set_flashdata('flash', 'edited.');
+                        $this->session->set_flashdata('flash', 'Role~edited.');
                         redirect('admin/role');
                     }
                 }
@@ -241,7 +241,7 @@ class Admin extends CI_Controller
                 if ($uri4 != null) {
                     // set flash for alert
                     $this->Admin_model->delRole($uri4);
-                    $this->session->set_flashdata('flash', 'deleted.');
+                    $this->session->set_flashdata('flash', 'Role~deleted.');
                     redirect('admin/role');
                 }
                 // if uri4 not found 
@@ -269,7 +269,7 @@ class Admin extends CI_Controller
         else {
             $this->load->view('admin/role');
         }
-        $this->load->view('templates/admin_role_footer');
+        $this->load->view('templates/footer');
     }
     // create method change access()
     public function changeAccess()

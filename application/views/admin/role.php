@@ -25,7 +25,7 @@
                         <td>
                             <a class="badge badge-primary" href="<?= base_url('admin/role/access/' . $r['id']); ?>">Access</a>
                             <a class="badge badge-warning" href="<?= base_url('admin/role/edit/' . str_replace(['=', '+', '/'], ['_', '-', '~'], $this->encryption->encrypt($r['id']))); ?>">Edit</a>
-                            <a class="badge badge-danger badge-del" data-vam="<?= $r['role']; ?>" href="<?= base_url('admin/role/del/' . str_replace(['=', '+', '/'], ['_', '-', '~'], $this->encryption->encrypt($r['id']))); ?>">Delete</a>
+                            <a class="badge badge-danger badge-del" data-title="Role" data-text="<?= $r['role']; ?>" href="<?= base_url('admin/role/del/' . str_replace(['=', '+', '/'], ['_', '-', '~'], $this->encryption->encrypt($r['id']))); ?>">Delete</a>
                         </td>
                     </tr>
             <?php
