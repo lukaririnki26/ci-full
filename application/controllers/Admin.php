@@ -51,59 +51,60 @@ class Admin extends CI_Controller
         $this->load->view('templates/sidebar');
         $this->load->view('templates/topbar');
         if ($uri3 != null) {
-            // if uri3 is add
-            if ($uri3 == 'add') {
-                // set rules form validation
-                $this->form_validation->set_rules('menu', 'Menu', 'trim|required|alpha_numeric_spaces', ['alpha_numeric_spaces' => 'Illegal characters not allowed.']);
-                // if turning error
-                if ($this->form_validation->run() == false) {
-                    $this->load->view('admin/addmenu');
-                }
-                // if turning succes
-                else {
-                    // set flash for alert
-                    $this->Admin_model->addMenu();
-                    $this->session->set_flashdata('flash', ' Menu~added.');
-                    redirect('admin/menu');
-                }
-            } elseif ($uri3 == 'edit') {
-                // chechk uri 4
-                if ($uri4 != null) {
-                    // set rules form validation
+            switch ($uri3) {
+                case 'add':
                     $this->form_validation->set_rules('menu', 'Menu', 'trim|required|alpha_numeric_spaces', ['alpha_numeric_spaces' => 'Illegal characters not allowed.']);
                     // if turning error
                     if ($this->form_validation->run() == false) {
-                        $data['menubyid'] = $this->Admin_model->getMenuByID($uri4);
-                        $this->load->view('admin/editmenu', $data);
+                        $this->load->view('admin/addmenu');
                     }
                     // if turning succes
                     else {
                         // set flash for alert
-                        $this->Admin_model->editMenu($uri4);
-                        $this->session->set_flashdata('flash', 'Menu~edited.');
+                        $this->Admin_model->addMenu();
+                        $this->session->set_flashdata('flash', ' Menu~added.');
                         redirect('admin/menu');
                     }
-                }
-                // if uri4 null
-                else {
+                    break;
+                case 'edit':
+                    // chechk uri 4
+                    if ($uri4 != null) {
+                        // set rules form validation
+                        $this->form_validation->set_rules('menu', 'Menu', 'trim|required|alpha_numeric_spaces', ['alpha_numeric_spaces' => 'Illegal characters not allowed.']);
+                        // if turning error
+                        if ($this->form_validation->run() == false) {
+                            $data['menubyid'] = $this->Admin_model->getMenuByID($uri4);
+                            $this->load->view('admin/editmenu', $data);
+                        }
+                        // if turning succes
+                        else {
+                            // set flash for alert
+                            $this->Admin_model->editMenu($uri4);
+                            $this->session->set_flashdata('flash', 'Menu~edited.');
+                            redirect('admin/menu');
+                        }
+                    }
+                    // if uri4 null
+                    else {
 
+                        redirect('admin/menu');
+                    }
+                    break;
+                case 'del':
+                    if ($uri4 != null) {
+                        // set flash for alert
+                        $this->Admin_model->delMenu($uri4);
+                        $this->session->set_flashdata('flash', 'Menu~deleted.');
+                        redirect('admin/menu');
+                    }
+                    // if uri4 not found 
+                    else {
+                        redirect('admin/menu');
+                    }
+                    break;
+                default:
                     redirect('admin/menu');
-                }
-            } elseif ($uri3 == 'del') {
-                if ($uri4 != null) {
-                    // set flash for alert
-                    $this->Admin_model->delMenu($uri4);
-                    $this->session->set_flashdata('flash', 'Menu~deleted.');
-                    redirect('admin/menu');
-                }
-                // if uri4 not found 
-                else {
-                    redirect('admin/menu');
-                }
-            }
-            // if uri3 ref not found 
-            else {
-                redirect('admin/menu');
+                    break;
             }
         }
         // if uri 3 null
