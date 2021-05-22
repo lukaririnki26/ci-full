@@ -10,19 +10,11 @@
             <!-- form -->
             <?= form_open_multipart('user/edit'); ?>
             <div class="form-group row">
-                <label for="name" class="form-label col-sm-3">Full Name</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">
-                    <?= form_error('name', '<small class="text-danger">', '</small>'); ?>
-
-                </div>
-            </div>
-            <div class="form-group row">
                 <label for="img" class="form-label col-sm-3">Image</label>
                 <div class="col-sm-9">
                     <div class="row">
                         <div class="col-sm-3">
-                            <img src="<?= base_url('assets/img/profile/' . $user['image']); ?>" class="img-thumbnail">
+                            <img src="<?= base_url('assets/img/profile/' . $user['image']); ?>" class="img-thumbnail rounded-circle">
                         </div>
                         <div class="col-sm-9">
                             <div class="custom-file">
@@ -31,6 +23,14 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="name" class="form-label col-sm-3">Full Name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">
+                    <?= form_error('name', '<small class="text-danger">', '</small>'); ?>
+
                 </div>
             </div>
             <div class=" form-group row justify-content-end">
