@@ -28,7 +28,7 @@ class Auth_model extends CI_Model
             'image' => 'default.jpg',
             'password' => password_hash(htmlspecialchars($this->input->post('password1', true)), PASSWORD_DEFAULT),
             'role_id' => '2',
-            'is_active' => '1',
+            'is_active' => '0',
             'date_created' => time()
         ];
         // launch insert to database
