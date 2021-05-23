@@ -38,4 +38,23 @@ class User_model extends CI_Model
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been changed.</div>');
         redirect('user');
     }
+    public function changePass($pass)
+    {
+        $curpass = htmlspecialchars($this->input->post('curpass', true));
+        $password = htmlspecialchars($this->input->post('password1', true));
+        if (!password_verify($curpass, $pass)) {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Current password wrong.</div>');
+        } else {
+            if ($curpass == $password) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">New Password can\'t be same to old </div>');
+            } else {
+                $passwordhash = password_hash($password, PASSWORD_DEFAULT);
+                $this->db->set('password', $passwordhash);
+                $this->db->where('email', $this->session->userdata('email'));
+                $this->db->update('user');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password changed.</div>');
+            }
+        }
+        redirect('user/changepass');
+    }
 }

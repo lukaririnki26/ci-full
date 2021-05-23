@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="name" class="form-label col-sm-3">Full Name</label>
+                <label for="name" class="form-label col-sm-3">Full name</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">
                     <?= form_error('name', '<small class="text-danger">', '</small>'); ?>
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class=" form-group row justify-content-end">
-                <div class="col-sm-9">
+                <div class="">
                     <button type="submit" class="btn btn-primary mr-3" name="submit"><i class="fas fa-fw fa-save"></i> Save</button>
                 </div>
             </div>

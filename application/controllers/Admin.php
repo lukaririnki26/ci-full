@@ -13,9 +13,8 @@ class Admin extends CI_Controller
         $this->load->library('encryption');
         $this->encryption->initialize(
             array(
-                'cipher' => 'aes-256',
-                'mode' => 'ctr',
-                'key' => 'hekelplo1'
+                'cipher' => 'AES-128',
+                'mode' => 'cbc'
             )
         );
     }
